@@ -1,1 +1,16 @@
-<p>rotation-item works!</p>
+<div class="card w-30 rotation-item">
+  <div class="card-body">
+    <h5 class="card-title">{{ city }}</h5>
+    <p class="card-text">
+      <span *ngFor="let rotation of allRotations" [ngClass]="{'rotation-item__founded': isHaveRotation(rotation)}">
+        {{ rotation }}
+      </span>
+    </p>
+  </div>
+
+  <div class="close-btn">
+    <button type="button" class="close" aria-label="Close" (click)="remove()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+</div>

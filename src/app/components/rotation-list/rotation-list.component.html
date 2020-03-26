@@ -1,1 +1,26 @@
-<p>rotation-list works!</p>
+<div class="container-fluid">
+  <form [formGroup]="form">
+    <div class="form-group">
+      <input #cityInput formControlName="city" required type="text"
+        class="form-control" placeholder="City name">
+      <small id="emailHelp" class="form-text text-muted">Only letters chars allowed</small>
+    </div>
+    <button [disabled]="form.invalid" class="btn btn-primary" (click)="addCity()">Add</button>
+  </form>
+
+
+  <div class="rotation-list__result">
+    <div *ngFor="let res of allRotations">
+      {{ res }}
+    </div>
+  </div>
+
+  <div class="container rotation-list__all">
+    <div class="row row-cols-1 row-cols-md-3">
+      <app-rotation-item [city]="city" *ngFor="let city of list"></app-rotation-item>
+    </div>
+    <span class="" *ngIf="list.length === 0">
+      List is empty. Please add city!
+    </span>
+  </div>
+</div>

@@ -10,11 +10,6 @@ export class AppComponent {
 
     constructor(
         private rotationService: RotationService,
-    ) {
-        console.log(this.rotationService.makeAllRotations('Tokyo'));
-        console.log(this.rotationService.findRotations('Tokyo', ['Tokyo', 'London', 'Rome', 'Donlon', 'Kyoto', 'Paris', 'Orem']));
-        console.log('\n\n--\n\n');
-        console.log(this.rotationService.groupCities(['Tokyo', 'London', 'Rome', 'Donlon', 'Kyoto', 'Paris', 'Orem']));
-    }
+    ) { }
 
 }

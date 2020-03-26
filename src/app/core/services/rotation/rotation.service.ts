@@ -4,16 +4,27 @@ import { Injectable } from '@angular/core';
     providedIn: 'root'
 })
 export class RotationService {
-
-    private globalList;
+    private globalList: string[] = ['Tokyo', 'London', 'Rome', 'Donlon', 'Kyoto', 'Paris', 'Orem'];
 
     constructor() { }
 
-    public makeAllRotations(city: string) {
-        // tokyo -> otoky -> yotok -> kyoto -> okyot
+    public get list() {
+        return this.globalList;
+    }
+
+    public addCity(city: string): void {
+        if (this.globalList.indexOf(city) === -1) {
+            this.globalList.push(city);
+        }
+    }
+
+    public remove(city: string): void {
+        this.globalList = this.globalList.filter((c) => c !== city);
+    }
+
+    public makeAllRotations(city: string): string[] {
         const allVersions = [];
-        city = city.toLowerCase();
-        let temp = city;
+        let temp = city.toLowerCase();
         for (let i = 0; i < temp.length - 1; i++) {
             temp = temp[temp.length - 1] + temp.substr(0, temp.length - 1);
             const nameCapitalized = temp.charAt(0).toUpperCase() + temp.slice(1);
@@ -22,22 +33,22 @@ export class RotationService {
         return allVersions;
     }
 
-    public findRotations(city: string, cityList: string[]) {
+    public findRotations(city: string): string[] {
         const foundValues = [];
         const cityRotations = this.makeAllRotations(city);
         cityRotations.forEach((c: string) => {
-            if (cityList.includes(c)) {
+            if (this.globalList.includes(c)) {
                 foundValues.push(c);
             }
         });
         return foundValues;
     }
 
-    public groupCities(cityList: string[]) {
+    public groupCities() {
         const formattedValues = [];
         const usedValues = [];
-        cityList.forEach((city: string) => {
-            const foundValues = this.findRotations(city, cityList);
+        this.globalList.forEach((city: string) => {
+            const foundValues = this.findRotations(city);
             usedValues.push(...foundValues);
             if (!usedValues.includes(city)) {
                 formattedValues.push([city, ...foundValues]);
