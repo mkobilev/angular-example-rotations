@@ -1,3 +1,20 @@
+# Task
+    /* 
+        Group the cities that by rotating them you obtain an outer city from the list.
+        Input: ['Tokyo', 'London', 'Rome', 'Donlon', 'Kyoto', 'Paris', 'Orem']
+        Output:
+        [
+            [ 'Tokyo', 'Kyoto' ],
+            [ 'London', 'Donlon' ],
+            [ 'Rome' ],
+            [ 'Orem' ],
+            [ 'Paris' ]
+        ]
+    */
+
+    // rome -> erom -> mero -> omer -> rome
+
+
 # AngularExampleRotations
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.1.
